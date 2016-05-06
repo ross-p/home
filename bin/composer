@@ -1,0 +1,11 @@
+#!/bin/sh
+
+COMPOSER=/c/dev/bin/composer.phar
+[ -x $COMPOSER ] || COMPOSER=/d/dev/bin/composer.phar
+
+if [ ! -x $COMPOSER ]; then
+	echo "FATAL: Composer does not exist: $COMPOSER" 1>&2
+	exit 1
+fi
+
+$COMPOSER $@

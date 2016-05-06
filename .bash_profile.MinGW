@@ -1,0 +1,48 @@
+#
+# ~/.bash_profile.MinGW
+#
+# Executed when logging into MinGW after the generic .bash_profile and
+# before any .bashrc or .bash_aliases
+#
+
+# For some reason mintty on msys sets TERM=xterm by default.
+# MinGW utilities require TERM=msys to be fully functional.
+export TERM="msys"
+
+# Search for an appropriate EDITOR
+#
+if           [ -e "/c/Program Files/Sublime Text 2/sublime_text.exe" ]; then
+	export EDITOR="/c/Program Files/Sublime Text 2/sublime_text.exe"
+
+elif         [ -e "/c/Program Files/Sublime Text 3/sublime_text.exe" ]; then
+	export EDITOR="/c/Program Files/Sublime Text 3/sublime_text.exe"
+fi
+
+# node.js is installed to a weird location on Windows, so bring it in
+# here even though it's not on standard Windows paths etc.
+if [ -e "/c/dev/nodejs/node.exe" ]; then
+	export NODE="/c/dev/nodejs/node.exe"
+	export NODE_VERSION=$("$NODE" --version)
+fi
+
+# MinGW cannot communicate with Pageant :(
+# So we need to run a separate ssh-agent here
+echo "Connecting to ssh-agent"
+export SSH_AUTH_SOCK=/tmp/.ssh-socket
+ssh-add -l > /dev/null 2>&1
+if [ $? = 2 ]; then
+	# exit status 2 means cannot connect, ssh-agent not running
+	echo "No ssh-agent running, starting a new one..."
+
+	rm -f /tmp/.ssh-agent-pid $SSH_AUTH_SOCK
+
+	eval $(ssh-agent -a $SSH_AUTH_SOCK)
+	echo $SSH_AGENT_PID > /tmp/.ssh-agent-pid
+
+	# Add all keys to the agent
+	echo
+	ssh-add ~/.ssh/*_rsa
+	echo
+	echo "ssh-agent contains the following keys:"
+	ssh-add -l || echo "WARNING: No keys found in ssh-agent" 1>&2
+fi

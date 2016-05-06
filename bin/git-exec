@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git update-index --chmod +x $@
+chmod 775 $@

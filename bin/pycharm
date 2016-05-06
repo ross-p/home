@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# Use a UI editor (if possible)
+#
+
+path="$@"
+
+# If there is an OS-specific way to edit, then do that
+
+if [ -e "$0.$OS_NAME" ]; then
+
+	# Try the OS-specific version and see if it works
+	. "$0.$OS_NAME"
+
+	# If that exited with success, we edited
+	[ $? = 0 ] && exit 0
+fi
+
+echo "Error: Don't know how to run pycharm on $OS_NAME" 1>&2
+exit 1

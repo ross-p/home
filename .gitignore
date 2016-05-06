@@ -1,0 +1,35 @@
+# Since I keep this repository in my home directory, this is a huge list of all of the files I DON'T intend to
+# publish to the general public as a part of this knowledge sharing.
+#
+# Many of these are cross-platform files that have no bearing on Windows whatsoever.
+#
+/.PyCharm*
+/.bash_history
+/.bash_logout
+/.bash*.CYGWIN
+/.bash*.Darwin
+/.bash*.FreeBSD
+/.bash*.Linux
+/.bash*.SunOS
+/.gitconfig
+/.oracle_jre_usage
+/.ssh
+/.ssl
+/AppData
+/Contacts
+/Desktop
+/Documents
+/Downloads
+/Favorites
+/Links
+/Music
+/NTUSER.*
+/OneDrive
+/Pictures
+/Saved Games
+/Searches
+/Tracing
+/Videos
+/git
+/ntuser.*
+/mercurial.ini

@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Alias for `gsutil` which is broken in MSYS
+#
+# Google Cloud SDK distributes a batch file to run gsutil.py, this is
+# just an equivalent bash file to do the same thing.
+#
+
+if [ -z "$CLOUDSDK_BIN" ]; then
+	if [ -d "/c/dev/gcloud" ]; then
+		CLOUDSDK_BIN="/c/dev/gcloud"
+	elif [ -d "/c/Program Files/Google/Cloud SDK" ]; then
+		CLOUDSDK_BIN="/c/Program Files/Google/Cloud SDK"
+	elif [ -d "/c/dev/GoogleCloudSDK" ]; then
+		CLOUDSDK_BIN="/c/dev/GoogleCloudSDK"
+	else
+		echo "ERROR: No Google Cloud SDK installed here (or it is in a bad location)" 1>&2
+		exit 1
+	fi
+	CLOUDSDK_BIN="$CLOUDSDK_BIN/google-cloud-sdk/bin"
+fi
+
+CLOUDSDK_PYTHON="${CLOUDSDK_PYTHON:-python}"
+
+exec "$CLOUDSDK_PYTHON" "$CLOUDSDK_BIN/bootstrapping/gsutil.py" $@

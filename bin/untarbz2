@@ -1,0 +1,3 @@
+#!/bin/sh
+
+tar --use-compress-program bzip2 -xf $@

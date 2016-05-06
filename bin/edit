@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Use a UI editor (if possible)
+#
+
+path="$@"
+
+# If there is an OS-specific way to edit, then do that
+
+if [ -e "$0.$OS_NAME" ]; then
+
+	# Try the OS-specific version and see if it works
+	. "$0.$OS_NAME"
+
+	# If that exited with success, we edited
+	[ $? = 0 ] && exit 0
+fi
+
+# Use whatever program is defined as $EDITOR in the environment
+# If there is no $EDITOR defined, use vi, which is ubiquitous, if clunky.
+
+editor="$EDITOR"
+[ -z "$editor" ] && editor="vi"
+
+exec "$editor" "$path"

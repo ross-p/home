@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# Open PuTTY terminal to somewhere
+#
+# Use this on MSYS instead of `ssh somewhere`
+#
+# Because ssh cannot use pageant in MSYS, due to MSYS not having
+# any posix unix sockets.  :(
+#
+
+putty="/c/Program Files/PuTTY/putty.exe"
+puttyx86="/c/Program Files (x86)/PuTTY/putty.exe"
+
+if [ -e "$puttyx86" ]; then
+	putty="$puttyx86"
+elif [ ! -e "$putty" ]; then
+	echo "Error: No putty found on your system" 1>&2
+	exit 1
+fi
+
+nohup "$putty" $@ > /dev/null 2>&1 &
+exit $?

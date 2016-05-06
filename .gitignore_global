@@ -1,0 +1,7 @@
+/.idea
+/.project
+*.exe
+*.dll
+*.so
+*.o
+*~

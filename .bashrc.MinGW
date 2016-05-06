@@ -1,0 +1,14 @@
+#
+# ~/.bashrc.MinGW -- executed for ALL shells
+#
+
+# Tell apps what editors I like.  MinGW doesn't have nano so we use vi
+#
+# It is possible that .bash_profile.MinGW found a better alternative,
+# but if it didn't then this is the fallback.
+#
+if [ -z "$EDITOR" ]; then
+	export EDITOR="vi"
+fi
+
+export VISUAL="$EDITOR"

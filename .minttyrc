@@ -1,0 +1,12 @@
+BoldAsFont=no
+Transparency=high
+OpaqueWhenFocused=yes
+Locale=C
+Charset=UTF-8
+Columns=110
+Rows=50
+BellSound=yes
+ConfirmExit=no
+Term=xterm-256color
+BackgroundColour=0,43,54
+ForegroundColour=131,148,150
