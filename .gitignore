@@ -3,6 +3,7 @@
 #
 # Many of these are cross-platform files that have no bearing on Windows whatsoever.
 #
+/.PhpStorm*
 /.PyCharm*
 /.bash_history
 /.bash_logout
@@ -21,6 +22,7 @@
 /Documents
 /Downloads
 /Favorites
+/Intel
 /Links
 /Music
 /NTUSER.*
