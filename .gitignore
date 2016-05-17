@@ -5,6 +5,7 @@
 #
 /.PhpStorm*
 /.PyCharm*
+/.VirtualBox
 /.bash_history
 /.bash_logout
 /.bash*.CYGWIN
@@ -32,6 +33,8 @@
 /Searches
 /Tracing
 /Videos
+/VirtualBox VMs
 /git
 /ntuser.*
 /mercurial.ini
+*.log
