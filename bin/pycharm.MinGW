@@ -5,7 +5,8 @@
 # Looks for the most recent version installed in /c/PF/JetBrains/PyCharm*/
 #
 
-dir="$(find "/c/Program Files (x86)/JetBrains/" -maxdepth 1 -type d -name "PyCharm*" 2> /dev/null | sort -r | head -n 1)"
+dir="$(find "/d/Apps/" -maxdepth 1 -type d -name "PyCharm*" 2> /dev/null | sort -r | head -n 1)"
+[ -z "$dir" ] && dir="$(find "/c/Program Files (x86)/JetBrains/" -maxdepth 1 -type d -name "PyCharm*" 2> /dev/null | sort -r | head -n 1)"
 [ -z "$dir" ] && dir="$(find "/d/Apps/JetBrains/" -maxdepth 1 -type d -name "PyCharm*" 2> /dev/null | sort -r | head -n 1)"
 PC="$dir/bin/PyCharm.exe"
 
