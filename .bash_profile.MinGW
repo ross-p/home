@@ -5,10 +5,6 @@
 # before any .bashrc or .bash_aliases
 #
 
-# For some reason mintty on msys sets TERM=xterm by default.
-# MinGW utilities require TERM=msys to be fully functional.
-export TERM="msys"
-
 # Search for an appropriate EDITOR
 #
 if           [ -e "/c/Program Files/Sublime Text 2/sublime_text.exe" ]; then
