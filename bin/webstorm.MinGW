@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# Start WebStorm with the parameters passed
+#
+# Looks for the most recent version installed in /d/Apps/WebStorm*
+#
+
+dir="$(find "/d/Apps/" -maxdepth 1 -type d -name "WebStorm*" 2> /dev/null | sort -r | head -n 1)"
+[ -z "$dir" ] && dir="$(find "/c/Program Files (x86)/JetBrains/" -maxdepth 1 -type d -name "WebStorm*" 2> /dev/null | sort -r | head -n 1)"
+[ -z "$dir" ] && dir="$(find "/d/Apps/JetBrains/" -maxdepth 1 -type d -name "WebStorm*" 2> /dev/null | sort -r | head -n 1)"
+PC="$dir/bin/WebStorm.exe"
+
+if [ -e "$PC" ]; then
+	. "$(dirname "$0")/mingw-funcs.sh"
+	path="$(resolve_windows_path "$@")"
+	nohup "$PC" "$path" > /dev/null 2>&1 &
+else
+	echo "Error: WebStorm does not exist: $PC" 1>&2
+	exit 1
+fi
