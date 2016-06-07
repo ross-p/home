@@ -6,6 +6,7 @@
 /.PhpStorm*
 /.PyCharm*
 /.VirtualBox
+/.WebStorm*
 /.bash_history
 /.bash_logout
 /.bash*.CYGWIN
@@ -13,6 +14,7 @@
 /.bash*.FreeBSD
 /.bash*.Linux
 /.bash*.SunOS
+/.electron
 /.gitconfig
 /.oracle_jre_usage
 /.ssh
