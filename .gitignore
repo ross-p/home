@@ -14,8 +14,10 @@
 /.bash*.FreeBSD
 /.bash*.Linux
 /.bash*.SunOS
+/.boto
 /.electron
 /.gitconfig
+/.gsutil
 /.oracle_jre_usage
 /.ssh
 /.ssl
