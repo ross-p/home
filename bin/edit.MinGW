@@ -10,6 +10,7 @@ path="$@"
 ST2="/c/Program Files/Sublime Text 2/sublime_text.exe"
 ST3="/c/Program Files/Sublime Text 3/sublime_text.exe"
 ST3short="/c/dev/st3/sublime_text.exe"
+ST3shortalt="/d/tools/st3/sublime_text.exe"
 
 
 if   [ -e "$ST3" ]; then
@@ -17,6 +18,9 @@ if   [ -e "$ST3" ]; then
 
 elif [ -e "$ST3short" ]; then
 	nohup "$ST3short" "$path" > /dev/null 2>&1 &
+
+elif [ -e "$ST3shortalt" ]; then
+	nohup "$ST3shortalt" "$path" > /dev/null 2>&1 &
 
 elif [ -e "$ST2" ]; then
 	nohup "$ST2" "$path" > /dev/null 2>&1 &
