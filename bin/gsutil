@@ -13,13 +13,22 @@ if [ -z "$CLOUDSDK_BIN" ]; then
 		CLOUDSDK_BIN="/c/Program Files/Google/Cloud SDK"
 	elif [ -d "/c/dev/GoogleCloudSDK" ]; then
 		CLOUDSDK_BIN="/c/dev/GoogleCloudSDK"
-	else
-		echo "ERROR: No Google Cloud SDK installed here (or it is in a bad location)" 1>&2
-		exit 1
 	fi
 	CLOUDSDK_BIN="$CLOUDSDK_BIN/google-cloud-sdk/bin"
 fi
 
-CLOUDSDK_PYTHON="${CLOUDSDK_PYTHON:-python}"
+if [ -d "$CLOUDSDK_BIN" ]; then
 
-exec "$CLOUDSDK_PYTHON" "$CLOUDSDK_BIN/bootstrapping/gsutil.py" $@
+	CLOUDSDK_PYTHON="${CLOUDSDK_PYTHON:-python}"
+
+	exec "$CLOUDSDK_PYTHON" "$CLOUDSDK_BIN/bootstrapping/gsutil.py" $@
+
+elif [ -d "$HOME/AppData/Local/Google/Cloud SDK" ]; then
+
+	# No old school GCloud SDK found, try new method (Aug 2016)
+
+	CLOUDSDK_BIN="$HOME/AppData/Local/Google/Cloud SDK"
+
+	exec "$CLOUDSDK_BIN/google-cloud-sdk/bin/gsutil.cmd" $@
+
+fi
